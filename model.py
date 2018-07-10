@@ -42,14 +42,14 @@ class SRCNN:
         return predicted
     
     def load(self):
-        model_filename = 'srcnn_model.json'
-        weight_filename = 'srcnn_model_weight.hdf5'
         '''
+        model_filename = 'srcnn_model.json'
         json_string = open(os.path.join('./',model_filename)).read()
         model = model_from_json(json_string)
         optimizer = Adam(lr=self.learning_rate)
         model.compile(optimizer=optimizer, loss='mean_squared_error', metrics=['accuracy'])
         '''
+        weight_filename = 'srcnn_model_weight.hdf5'
         model = self.build_model()
         model.load_weights(os.path.join('./',weight_filename))
         return model
@@ -57,5 +57,5 @@ class SRCNN:
     def save(self):
         json_string = self.model.to_json()
         open(os.path.join('./','srcnn_model.json'),'w').write(json_string)
-        self.model.sample_weights(os.path.join('./','srcnn_model_weight.hdf5'))
+        self.model.save_weights(os.path.join('./','srcnn_model_weight.hdf5'))
         return json_string

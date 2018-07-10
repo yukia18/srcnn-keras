@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 from PIL import Image
 
-def load_train(image_size=64, label_size=52, stride=21):
+def load_train(image_size=33, label_size=21, stride=21):
     dirname = './train'
     dir_list = os.listdir(dirname)
     images = [cv2.cvtColor(cv2.imread(os.path.join(dirname,img)),cv2.COLOR_BGR2GRAY) for img in dir_list]
@@ -39,6 +39,9 @@ def load_train(image_size=64, label_size=52, stride=21):
     return sub_trains, sub_labels
 
 def load_test():
+    '''
+    image shape is 256 * 256
+    '''
     dirname = './test'
     dir_list = os.listdir(dirname)
     images = [cv2.cvtColor(cv2.imread(os.path.join(dirname,img)),cv2.COLOR_BGR2GRAY) for img in dir_list]
