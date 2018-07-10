@@ -4,8 +4,8 @@ import cv2
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--image_size', type=int, default=255)
-parser.add_argument('--label_size', type=int, default=243)
+parser.add_argument('--image_size', type=int, default=None)
+parser.add_argument('--label_size', type=int, default=None)
 parser.add_argument('--c_dim', type=int, default=1)
 parser.add_argument('--learning_rate', type=float, default=1e-4)
 parser.add_argument('--batch_size', type=int, default=128)
