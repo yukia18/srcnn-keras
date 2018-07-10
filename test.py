@@ -4,8 +4,8 @@ import cv2
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--image_size', type=int, default=256)
-parser.add_argument('--label_size', type=int, default=244)
+parser.add_argument('--image_size', type=int, default=255)
+parser.add_argument('--label_size', type=int, default=243)
 parser.add_argument('--c_dim', type=int, default=1)
 parser.add_argument('--learning_rate', type=float, default=1e-4)
 parser.add_argument('--batch_size', type=int, default=128)
@@ -22,9 +22,9 @@ def main(args):
         is_training=False)
     X_test, Y_test = load_test()
     predicted = srcnn.process(X_test)
-    cv2.imwrite('input.bmp', X_test)
-    cv2.imwrite('predicted.bmp', predicted)
-
+    cv2.imwrite('input.bmp', X_test[0])
+    cv2.imwrite('answer.bmp', Y_test[0])
+    cv2.imwrite('predicted.bmp', predicted[0])
 
 if __name__ == '__main__':
     main(args=parser.parse_args())

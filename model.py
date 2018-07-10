@@ -37,7 +37,7 @@ class SRCNN:
             self.save()
         return history
     
-    def process(input):
+    def process(self, input):
         predicted = self.model.predict(input)
         return predicted
     

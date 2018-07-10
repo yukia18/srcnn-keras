@@ -61,6 +61,9 @@ def load_test():
     trains = [img.reshape(img.shape[0],img.shape[1],1) for img in trains]
     labels = [img.reshape(img.shape[0],img.shape[1],1) for img in labels]
 
+    trains = np.array(trains)
+    labels = np.array(labels)
+
     return trains, labels
 
 
