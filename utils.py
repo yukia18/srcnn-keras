@@ -12,8 +12,8 @@ def load_train(image_size=33, stride=33, scale=3):
     trains = images.copy()
     labels = images.copy()
     
-    trains = [cv2.resize(img, None, fx=1/scale, fy=1/scale) for img in trains]
-    trains = [cv2.resize(img, None, fx=scale/1, fy=scale/1) for img in trains]
+    trains = [cv2.resize(img, None, fx=1/scale, fy=1/scale, interpolation=cv2.INTER_CUBIC) for img in trains]
+    trains = [cv2.resize(img, None, fx=scale/1, fy=scale/1, interpolation=cv2.INTER_CUBIC) for img in trains]
 
     sub_trains = []
     sub_labels = []
@@ -42,16 +42,14 @@ def load_test(scale=3):
     tests = images.copy()
     labels = images.copy()
     
-    tests = [cv2.resize(img, None, fx=1/scale, fy=1/scale) for img in tests]
-    tests = [cv2.resize(img, None, fx=scale/1, fy=scale/1) for img in tests]
+    pre_tests = [cv2.resize(img, None, fx=1/scale, fy=1/scale, interpolation=cv2.INTER_CUBIC) for img in tests]
+    tests = [cv2.resize(img, None, fx=scale/1, fy=scale/1, interpolation=cv2.INTER_CUBIC) for img in pre_tests]
     
+    pre_tests = [img.reshape(img.shape[0],img.shape[1],1) for img in pre_tests]
     tests = [img.reshape(img.shape[0],img.shape[1],1) for img in tests]
     labels = [img.reshape(img.shape[0],img.shape[1],1) for img in labels]
 
-    tests = np.array(tests)
-    labels = np.array(labels)
-
-    return tests, labels
+    return pre_tests, tests, labels
 
 def mse(y, t):
     return np.mean(np.square(y - t))
