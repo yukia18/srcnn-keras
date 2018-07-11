@@ -7,8 +7,8 @@ parser.add_argument('--image_size', type=int, default=33)
 parser.add_argument('--c_dim', type=int, default=1)
 parser.add_argument('--learning_rate', type=float, default=1e-4)
 parser.add_argument('--batch_size', type=int, default=128)
-parser.add_argument('--epochs', type=int, default=1)
-parser.add_argument('--stride', type=int, default=None)
+parser.add_argument('--epochs', type=int, default=1500)
+parser.add_argument('--stride', type=int, default=14)
 parser.add_argument('--scale', type=int, default=3)
 
 def main(args):
@@ -19,10 +19,6 @@ def main(args):
         learning_rate=args.learning_rate,
         batch_size=args.batch_size,
         epochs=args.epochs)
-    if args.stride is None:
-        args.stride = args.image_size
-    else:
-        args.stride = args.stride
     X_train, Y_train = load_train(image_size=args.image_size, stride=args.stride, scale=args.scale)
     srcnn.train(X_train, Y_train)
 
