@@ -7,9 +7,8 @@ from keras.optimizers import Adam
 from keras.layers.core import Activation
 
 class SRCNN:
-    def __init__(self, image_size, label_size, c_dim, is_training, learning_rate=1e-4, batch_size=128, epochs=1500):
+    def __init__(self, image_size, c_dim, is_training, learning_rate=1e-4, batch_size=128, epochs=1500):
         self.image_size = image_size
-        self.label_size = label_size
         self.c_dim = c_dim
         self.learning_rate = learning_rate
         self.batch_size = batch_size
