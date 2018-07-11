@@ -29,8 +29,8 @@ def load_train(image_size=33, stride=33, scale=3):
                 sub_trains.append(sub_train)
                 sub_labels.append(sub_label)
     
-    sub_trains = np.array(sub_trains)
-    sub_labels = np.array(sub_labels)
+    sub_trains = np.array(sub_trains) / 255.
+    sub_labels = np.array(sub_labels) / 255.
     return sub_trains, sub_labels
 
 def load_test(scale=3):
@@ -46,7 +46,7 @@ def load_test(scale=3):
     tests = [cv2.resize(img, None, fx=scale/1, fy=scale/1, interpolation=cv2.INTER_CUBIC) for img in pre_tests]
     
     pre_tests = [img.reshape(img.shape[0],img.shape[1],1) for img in pre_tests]
-    tests = [img.reshape(img.shape[0],img.shape[1],1) for img in tests]
+    tests = [img.reshape(img.shape[0],img.shape[1],1) / 255. for img in tests]
     labels = [img.reshape(img.shape[0],img.shape[1],1) for img in labels]
 
     return pre_tests, tests, labels

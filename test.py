@@ -3,6 +3,7 @@ from model import SRCNN
 from utils import load_test
 import cv2
 import argparse
+import numpy as np
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--image_size', type=int, default=None)
@@ -19,7 +20,13 @@ def main(args):
     predicted_list = []
     for img in X_test:
         predicted = srcnn.process(img.reshape(1,img.shape[0],img.shape[1],1))
+        predicted = predicted * 255
+        predicted = np.where(predicted > 255, 255, predicted)
         predicted_list.append(predicted.reshape(predicted.shape[1],predicted.shape[2],1))
+    for idx, img in enumerate(X_test):
+        img = img * 255
+        img = np.where(img > 255, 255, img)
+        X_test[idx] = img
     n_img = len(predicted_list)
     dirname = './result'
     for i in range(n_img):
