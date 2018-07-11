@@ -15,7 +15,7 @@ def main(args):
         image_size=args.image_size,
         c_dim=args.c_dim,
         is_training=False)
-    X_test, Y_test = load_test(scale=args.scale)
+    X_pre_test, X_test, Y_test = load_test(scale=args.scale)
     predicted_list = []
     for img in X_test:
         predicted = srcnn.process(img.reshape(1,img.shape[0],img.shape[1],1))
@@ -24,6 +24,7 @@ def main(args):
     dirname = './result'
     for i in range(n_img):
         imgname = 'image{:02}'.format(i)
+        cv2.imwrite(os.path.join(dirname,imgname+'_original.bmp'), X_pre_test[i])
         cv2.imwrite(os.path.join(dirname,imgname+'_input.bmp'), X_test[i])
         cv2.imwrite(os.path.join(dirname,imgname+'_answer.bmp'), Y_test[i])
         cv2.imwrite(os.path.join(dirname,imgname+'_predicted.bmp'), predicted_list[i])
