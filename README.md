@@ -1,5 +1,5 @@
 # srcnn_keras
-## Abstruct
+## Abstract
 This is an implementation of SRCNN using keras. You can conduct simple experiments of super resolution on Set5 or your own images.
 ## Requirements
 - python 3.6
