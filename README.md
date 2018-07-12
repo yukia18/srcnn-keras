@@ -16,3 +16,5 @@ Outputs are restored in './result'. If you want to try super resolution to your 
 - answer: target images (raw images in './test')
 - input: 'original' images preprocessed as upsampling scale/1 (default scale=3)
 - predicted: outputs images
+## References
+[kweisamx/TensorFlow-SRCNN](https://github.com/kweisamx/TensorFlow-SRCNN)
