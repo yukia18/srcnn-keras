@@ -1,4 +1,5 @@
 # srcnn_keras
+http://personal.ie.cuhk.edu.hk/~ccloy/files/eccv_2014_deepresolution.pdf
 ## Abstract
 This is an implementation of SRCNN using keras. You can conduct simple experiments of super resolution on Set5 or your own images.
 ## Requirements
