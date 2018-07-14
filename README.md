@@ -9,7 +9,7 @@ This is an implementation of SRCNN using keras. You can conduct simple experimen
 ## Usage
 ### Train
 `python train.py`  
-To conduct using GPU is recommended. There is a pretrained model in './model' in my environment, so you don't have to train model.
+To conduct using GPU is recommended. There is a pretrained model in './model', so you don't have to train model.
 ### Test
 `python test.py`  
 Outputs are restored in './result'. If you want to try super resolution to your own images, please put them in './test'.
